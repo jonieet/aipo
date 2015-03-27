@@ -1034,7 +1034,13 @@ public class TimelineUtils {
       .append(" (SELECT COUNT(*) FROM eip_t_timeline_like t0 WHERE (t0.timeline_id = eip_t_timeline.timeline_id) AND (t0.owner_id = #bind($user_id))) AS is_like,");
     // いいね！の総数
     select
-      .append(" (SELECT COUNT(*) FROM eip_t_timeline_like t1 WHERE t1.timeline_id = eip_t_timeline.timeline_id) AS l_count");
+      .append(" (SELECT COUNT(*) FROM eip_t_timeline_like t1 WHERE t1.timeline_id = eip_t_timeline.timeline_id) AS l_count,");
+
+    // ユーザー名を検索項目に追加する
+    select
+      .append(" (SELECT first_name FROM turbine_user t1 WHERE t1.user_id = eip_t_timeline.owner_id), ");
+    select
+      .append(" (SELECT last_name FROM turbine_user t1 WHERE t1.user_id = eip_t_timeline.owner_id) ");
 
     StringBuilder count = new StringBuilder();
     count.append("SELECT count(eip_t_timeline.timeline_id) AS c ");
