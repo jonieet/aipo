@@ -26,16 +26,17 @@
 <div class="tlClipBoard clearfix" id="tlClipBoard_$!{portlet.ID}">
   <input type="hidden" id="TimelinePage_$!{portlet.ID}" name="TimelinePage_$!{portlet.ID}" value="1"/>
   <input type="hidden" id="TimelinePage_$!{portlet.ID}_imagesMaxCount" name="TimelinePage_$!{portlet.ID}_imagesMaxCount" value="$result.Images.size()"/>
+  #if($result.OgImage)
+      <div id="tlClipImage_$!{portlet.ID}_1" class="tlClipImage">
+          <img src="$!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData('template', 'ProxyScreen').addQueryData('url', $!result.OgImage))" name="$!result.OgImage" >
+      </div>
+  #end
   #foreach ($record in $result.Images)
-    #if($velocityCount == 1)
       <div class="tlClipImage" id="tlClipImage_$!{portlet.ID}_${velocityCount}_untiview" style="display:none">
-    #else
-      <div class="tlClipImage" id="tlClipImage_$!{portlet.ID}_${velocityCount}_untiview" style="display:none">
-    #end
     	#if(!$result.YoutubeFlag)
-        <img data-yt="$result.YoutubeFlag" id="tlClipImage_$!{portlet.ID}_${velocityCount}_img" name="$!record" src="$!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData('template', 'ProxyScreen').addQueryData('url', $!record))" onload="aipo.timeline.refreshImageList('$portlet.ID', '$velocityCount');">
+        <img data-yt="$result.YoutubeFlag" id="tlClipImage_$!{portlet.ID}_${velocityCount}_img" name="$!record" src="$!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData('template', 'ProxyScreen').addQueryData('url', $!record))"#if($velocityCount != 1) onload="aipo.timeline.refreshImageList('$portlet.ID', '$velocityCount');"#end>
         #else
-        <img data-yt="$result.YoutubeFlag" id="tlClipImage_$!{portlet.ID}_${velocityCount}_img" name="$!record" src="https://i.ytimg.com/vi/$result.YoutubeId/default.jpg" onload="aipo.timeline.refreshImageList('$portlet.ID', '$velocityCount');">
+        <img data-yt="$result.YoutubeFlag" id="tlClipImage_$!{portlet.ID}_${velocityCount}_img" name="$!record" src="https://i.ytimg.com/vi/$result.YoutubeId/default.jpg"#if($velocityCount != 1) onload="aipo.timeline.refreshImageList('$portlet.ID', '$velocityCount');"#end>
         #end
       </div>
   #end

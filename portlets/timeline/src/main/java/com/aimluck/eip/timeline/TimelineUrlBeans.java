@@ -26,7 +26,7 @@ import com.aimluck.eip.util.ALCommonUtils;
 
 /**
  * タイムライントピックの検索データを管理するクラスです。 <BR>
- * 
+ *
  */
 public class TimelineUrlBeans {
   /** 画像 */
@@ -46,6 +46,9 @@ public class TimelineUrlBeans {
 
   /** YouTubeの判断 */
   private boolean youtubeFlag;
+
+  /** og:imageで指定された画像 */
+  private String ogImage;
 
   /**
    * コンストラクタ
@@ -151,6 +154,21 @@ public class TimelineUrlBeans {
    */
   public void setYoutubeFlag(boolean youtubeFlag) {
     this.youtubeFlag = youtubeFlag;
+  }
+
+  /**
+   * @return ogImage
+   */
+  public String getOgImage() {
+    return ogImage;
+  }
+
+  /**
+   * @param ogimage
+   *          セットする youtubeFlag
+   */
+  public void setOgImage(String ogImage) {
+    this.ogImage = ogImage;
   }
 
 }

@@ -172,6 +172,9 @@ aipo.timeline.refreshImageList = function(pid, i) {
 			if (aipo.timeline.revmaxlist.hasOwnProperty(pid)) {
 				revmax = aipo.timeline.revmaxlist[pid];
 			}
+			if(revmax==0&&document.getElementById("tlClipImage_"+pid+"_1")!=null){
+				revmax = 1;
+			}
 			revmax++;
 			aipo.timeline.revmaxlist[pid] = revmax;
 
@@ -197,6 +200,9 @@ aipo.timeline.refreshImageList = function(pid, i) {
 		// 描画対象
 		if (aipo.timeline.revmaxlist.hasOwnProperty(pid)) {
 			revmax = aipo.timeline.revmaxlist[pid];
+		}
+		if(revmax==0&&document.getElementById("tlClipImage_"+pid+"_1")!=null){
+			revmax = 1;
 		}
 		revmax++;
 		aipo.timeline.revmaxlist[pid] = revmax;
@@ -275,6 +281,7 @@ aipo.timeline.onKeyUp = function(pid, tid, e) {
 					if (spritval[i].match(/^https?:\/\/[^ 	]/i)) {
 						aipo.timeline.getUrl(spritval[i], pid);
 						aipo.timeline.revmaxlist[pid] = 0;
+
 					}
 				}
 			}
