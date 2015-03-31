@@ -9,4 +9,4 @@ deploy:
     secure: idOnfw1gWPz5R+a/k9G7cjEDRc9DsiBzrb5IqB+6+JAWfFm8V437IpVhkrpgGZSlvNUILo1BQOQkrWGXYq7hfZyGHtvm4pR8Mn/9H2mpjEhhCaNXf50bNxuyssYV0nVO7ELr/4CgYYEVfNxCqf44sHxQptWJG8kUWqjPkPzQVvM=
   file: war/target/aipo.war
   on:
-    repo: jonieet/aipo
+    tags: true
